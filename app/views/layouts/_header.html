@@ -1,0 +1,40 @@
+<div class="contain-to-grid sticky">
+  <nav class="top-bar" data-topbar>
+    <ul class="title-area">
+      <li class="name">
+        <h1><a href="#"><%= image_tag 'rails.jpg', size: '30x38' %> 
+                        KEY 1</a></h1>
+      </li>
+      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+    </ul>
+
+    <section class="top-bar-section">
+      <!-- Right Nav Section -->
+      <ul class="right">
+        <li class="has-dropdown">
+          <a href="#">Rt Item 1</a>
+          <ul class="dropdown">
+            <li><a href="#">Drop 1</a></li>
+            <li><a href="#">Drop 2</a></li>
+            <li class="has-dropdown">
+              <a href="#">Nested Drop</a>
+              <ul class="dropdown">
+                <li><a href="#">Nested 1</a></li>
+                <li><a href="#">Nested 2</a></li>
+                <li><a href="#">Nested 3</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Drop 3</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Rt Item 2</a></li>
+      </ul>
+
+      <!-- Left Nav Section -->
+      <ul class="left">
+        <li><%= link_to("For Select", for_selects_path) %></li>
+        <li><%= link_to("Key", keys_path) %></li>
+      </ul>
+    </section>
+  </nav>  
+</div>

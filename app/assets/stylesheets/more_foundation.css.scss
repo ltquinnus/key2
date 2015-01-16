@@ -1,0 +1,48 @@
+ 
+$primary-color: #008CBA;
+$secondary-color: #e7e7e7;
+$alert-color: #f04124;
+$success-color: #43AC6A;
+$warning-color: #f08a24;
+$info-color: #a0d3e8;
+
+
+/* TYPOGRAPHY  */
+.size12Line14 {
+	font-size: 12px;
+	line-height: 14px;
+}
+
+.alertText {
+	color: $alert-color;
+}
+.alignRtNoPadding {
+	text-align: right;
+	padding-left: 0rem;
+	padding-right: 0rem;
+}
+.alignCenterNoPadding {
+	text-align: center;
+	padding-left: 0rem;
+	padding-right: 0rem;
+}
+
+/* TABLE  */
+ /* Hover color change over table rows */
+tbody tr:hover {
+	background-color: #beecff;
+}
+
+.tableFooter {
+	background-color: $info-color;
+}
+.tableHeader {
+	background-color: $info-color;
+}
+
+label.right {
+	text-align: right;
+	padding-right: 10px;
+}
+
+

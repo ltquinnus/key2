@@ -1,0 +1,35 @@
+<h1>Listing keys</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Company</th>
+      <th>Description</th>
+      <th>Number</th>
+      <th>Checkout</th>
+      <th>Checkin</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @keys.each do |key| %>
+      <tr>
+        <td><%= key.Company %></td>
+        <td><%= key.Description %></td>
+        <td><%= key.Number %></td>
+        <td><%= key.Checkout %></td>
+        <td><%= key.Checkin %></td>
+        <td><%= link_to 'Show', key %></td>
+        <td><%= link_to 'Edit', edit_key_path(key) %></td>
+        <td><%= link_to 'Destroy', key, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Key', new_key_path %>

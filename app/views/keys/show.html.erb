@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Company:</strong>
+  <%= @key.Company %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @key.Description %>
+</p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @key.Number %>
+</p>
+
+<p>
+  <strong>Checkout:</strong>
+  <%= @key.Checkout %>
+</p>
+
+<p>
+  <strong>Checkin:</strong>
+  <%= @key.Checkin %>
+</p>
+
+<%= link_to 'Edit', edit_key_path(@key) %> |
+<%= link_to 'Back', keys_path %>
