@@ -3,10 +3,21 @@ class KeysController < ApplicationController
 
   # GET /keys
   # GET /keys.json
-  def index
-    @keys = Key.all
-  end
-
+   def index
+    keys = Key.all
+     @q = Key.search(params[:q]) 
+     @keys = @q.result.page(params[:page]).per(15)
+     @totNumber = keys.count
+      @searchNumber = @q.result.count  
+  
+   @grouped_options = ForSelect.GroupedSelect('1','key',  ForSelect)
+        
+      respond_to do |format|
+      format.html { render action: 'index' }
+      format.js {}
+    end
+ end
+ 
   # GET /keys/1
   # GET /keys/1.json
   def show
@@ -15,11 +26,21 @@ class KeysController < ApplicationController
   # GET /keys/new
   def new
     @key = Key.new
+    @grouped_options = ForSelect.GroupedSelect('1','key',  ForSelect)
+  respond_to do |format|
+      format.html { render action: 'new' }
+      format.js { render "new_edit" }
   end
+   end
 
   # GET /keys/1/edit
   def edit
-  end
+   @grouped_options = ForSelect.GroupedSelect('1','key',  ForSelect)
+    respond_to do |format|
+      format.html { render action: 'edit' }
+      format.js { render "new_edit" }
+    end
+ end
 
   # POST /keys
   # POST /keys.json
@@ -28,8 +49,9 @@ class KeysController < ApplicationController
 
     respond_to do |format|
       if @key.save
-        format.html { redirect_to @key, notice: 'Key was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @key }
+      format.html { redirect_to @key, notice: 'Key was successfully created.' }
+      format.js {render "update_create"}
+      format.json { render action: 'show', status: :created, location: @key }
       else
         format.html { render action: 'new' }
         format.json { render json: @key.errors, status: :unprocessable_entity }
@@ -42,8 +64,11 @@ class KeysController < ApplicationController
   def update
     respond_to do |format|
       if @key.update(key_params)
-        format.html { redirect_to @key, notice: 'Key was successfully updated.' }
-        format.json { head :no_content }
+         @q = Key.search(params[:q])
+          @keys = @q.result.page(params[:page]).per(15)
+         format.html { redirect_to @key, notice: 'Key was successfully updated.' }
+         format.js { render "update_create" }
+         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
         format.json { render json: @key.errors, status: :unprocessable_entity }

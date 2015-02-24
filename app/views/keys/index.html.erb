@@ -1,35 +1,104 @@
-<h1>Listing keys</h1>
+<div class="row">
+  <div class="large-3 large-centered columns alignCenterNoPadding">
+    <h3>Key List </h3>
+  </div>
+</div>
+ <div class="row">  
+    <div class="large-9 columns">
+      <div class="panel radius">
+        <div class="panel callout radius">
+           <%= search_form_for @q, id: 'fKey_filter', remote: true do |f| %>
+              <div class="row collapse">
+                <div class="hide" >
+                  <div class="small-2 columns">
+                      <%= f.submit class: 'button tiny radius' %>           
+                    </div>
+                </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Company</th>
-      <th>Description</th>
-      <th>Number</th>
-      <th>Checkout</th>
-      <th>Checkin</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+                <div class="small-12 columns">
+                  <div class="row collapse">
+                       
+                      <div class="small-1 columns">
+                        <%= f.label(:Description_start, "Desc:", class: " right inline")  %>
+                      </div>
+                      <div class="small-2 left columns">
+                        <%= f.search_field :Description_start %>
+                      </div>
+                       <div class="small-1 columns">
+                        <%= f.label(:Number_start, "#:", class: " right inline")  %>
+                      </div>
+                      <div class="small-2 left columns">
+                        <%= f.search_field :Number_start %>
+                      </div>
+                     <div class="small-1 columns">
+                        <%= f.label(:Checkout_start, "Cout:", class: " right inline")  %>
+                      </div>
+                      <div class="small-2 left columns">
+                        <%= f.search_field :Checkout_start %>
+                      </div>
+                     <div class="small-1 columns">
+                        <%= f.label(:Checkin_start, "Cin:", class: " right inline")  %>
+                      </div>
+                      <div class="small-2 left columns">
+                        <%= f.search_field :Checkin_start %>
+                      </div>
+                                         
+                  </div>
+               </div>
+                    <div class="row collapse">
+                   <div class="small-1 columns">
+                        <%= f.label(:created_at_start, "created:", class: " right inline")  %>
+                      </div>
+                      <div class="small-2 left columns">
+                        <%= f.search_field :created_at_start%>
+                      </div>
+                     <div class="small-1 columns">
+                        <%= f.label(:updated_at_start, "updated:", class: " right inline")  %>
+                      </div>
+                      <div class="small-2 left columns">
+                        <%= f.search_field :updated_at_start %>
+                      </div>
 
-  <tbody>
-    <% @keys.each do |key| %>
-      <tr>
-        <td><%= key.Company %></td>
-        <td><%= key.Description %></td>
-        <td><%= key.Number %></td>
-        <td><%= key.Checkout %></td>
-        <td><%= key.Checkin %></td>
-        <td><%= link_to 'Show', key %></td>
-        <td><%= link_to 'Edit', edit_key_path(key) %></td>
-        <td><%= link_to 'Destroy', key, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+                    <div class="small-1 columns">
+                      <%= f.label(:Company_eq, "Company", class: "right inline")  %>
+                    </div>
+                    <div class="small-2 left columns">
+                      <%#= f.search_field :Company_cont %>
+                      <%= f.select(:Company_eq, grouped_options_for_select(@grouped_options), prompt: 'Choose...') %>
+                    </div>
+                    </div>
 
-<br>
+                    
+              </div>
 
-<%= link_to 'New Key', new_key_path %>
+            <% end %>
+        </div>
+        <div id="divTable">
+          <%= render('table') %>
+        </div>
+       </div>
+    </div>
+   
+    <div class="large-3 columns">
+      <div class="panel radius">
+        <!-- <div class="panel callout radius"> -->
+          <div class="large-centered">
+              <%= link_to 'New Key', new_key_path, class: "button tiny radius", id: 'bNew', remote: true%>
+          </div>
+          <div id="divForm">
+            <%#= render('form') %> 
+          </div>
+        <!-- </div> -->
+      </div>
+    </div>
+  
+
+  
+  
+</div>
+
+
+
+
+
+

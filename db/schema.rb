@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150115185355) do
+ActiveRecord::Schema.define(version: 20150223205546) do
 
   create_table "for_selects", force: true do |t|
     t.string   "code"
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 20150115185355) do
     t.datetime "updated_at"
   end
 
+  add_index "for_selects", ["code"], name: "index_for_selects_on_Code"
+
   create_table "keys", force: true do |t|
     t.string   "Company"
     t.text     "Description"
@@ -33,5 +35,7 @@ ActiveRecord::Schema.define(version: 20150115185355) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "keys", ["Company"], name: "index_keys_on_Company"
 
 end

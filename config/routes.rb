@@ -1,5 +1,10 @@
-Key1::Application.routes.draw do
-  resources :for_selects
+Key2::Application.routes.draw do
+  resources :keys do
+    collection do
+      match 'complex' => 'keys#complex', via: [:get, :post], as: :complex
+    end
+  end
+ resources :for_selects
 
   resources :keys
 
@@ -7,7 +12,7 @@ Key1::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'keys#index'
+  root 'keys#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
