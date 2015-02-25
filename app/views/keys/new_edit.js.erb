@@ -1,0 +1,17 @@
+// Insert new/edit form into divForm
+	$('#divForm').html("<%= j render('form') %>");
+// WARD VALUES
+	// If "new" ward will be nil, if edit will have a value
+	var company = "<%=  @key.Company %>"
+	if (company.length > 0) 
+		{
+		 $('#key_Company').val(company)
+		};
+
+		$('#bNew').hide();
+	$('#bCancel').click(function()
+		{
+		// $('#sWard').appendTo('#divIndexHideWrapper');
+		$('#divForm').html("");
+		$('#bNew').show();
+		});

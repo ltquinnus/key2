@@ -1,0 +1,39 @@
+<table>
+  <thead>
+    <tr class="tableHeader">
+        <th><%= sort_link(@q, :company, "Comp") %></th>
+      <th><%= sort_link(@q, :description, "Desc") %></th>
+      <th><%= sort_link(@q, :checkout, "CO") %></th>
+      <th><%= sort_link(@q, :number, "NO") %></th>
+      <th><%= sort_link(@q, :checkin,"CI") %></th>
+      <th><%= sort_link(@q, :created_at, "created_at") %></th>
+      <th><%= sort_link(@q, :updated_at, "updated_at") %></th>
+      <th></th>
+        <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @keys.each do |key| %>
+      <tr>
+        <td><%= key.Company %></td>
+        <td><%= key.Description %></td>
+        <td><%= key.Checkout %></td>
+        <td><%= key.Number %></td>
+        <td><%= key.Checkin %></td>
+       <td><%= key.created_at %></td>
+       <td><%= key.updated_at %></td>
+             <!-- <td><%#= link_to 'Show', key %></td> -->
+        <td><%= link_to 'Edit', edit_key_path(key), class: 'lEdit', remote: true%></td>
+          <td><%= link_to 'Destroy', key, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+       </tr>
+    <% end %>
+    <tr>
+      <td colspan="6" class="tableFooter">
+        <%= paginate @keys %>
+      </td>
+      <td colspan="4" class="tableFooter">
+        <%= @searchNumber %>  from <%= @totNumber %> total
+      </td>
+    </tr>
+  </tbody> 
+</table> 
